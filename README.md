@@ -5,7 +5,7 @@ Browse faster by blocking ads and trackers that violate your privacy. and cost y
 
 wikipedia.org/wiki/Brave_(web_browser)
 
-<img src="https://raw.githubusercontent.com/AppJail-makejails/linux-brave/refs/heads/main/linux-brave/brave-browser.png" width="30%" height="auto" alt="linux-brave logo">
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Brave_Logo_%282024%29.svg/1280px-Brave_Logo_%282024%29.svg.png" width="30%" height="auto" alt="linux-brave logo">
 
 ## How to use this AppJail
 
