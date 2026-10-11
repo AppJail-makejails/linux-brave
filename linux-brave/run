@@ -1,10 +1,7 @@
 #!/bin/sh
 
-JEXEC="${X11APPJAIL_BASEDIR}/usr/local/libexec/appjail/jexec/jexec"
+__run_program=
 
-exec "${JEXEC}" -l \
-    -U noroot \
-    -e DISPLAY="${X11APPJAIL_DISPLAY}" \
-    -e BRAVE_GPU=1 \
-    "${X11APPJAIL_JAIL}" \
-    brave-browser --ignore-gpu-blocklist "$@"
+set -- brave-browser --ignore-gpu-blocklist "$@"
+
+. "${X11APPJAIL_WORKDIR}/appjail.d/run.subr"

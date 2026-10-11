@@ -64,6 +64,32 @@ $ x11appjail destroy-jail linux-brave
 ```
 
 Once you run the AppJail again, the OCI image is pulled again only if it is newer than the one on your system.
+### Prerequisites
+
+[load-kld](https://github.com/DtxdF/AppJail/blob/main/share/examples/appjail/hooks/pre.d/load-kld.sh) and [sysctl](https://github.com/DtxdF/AppJail/blob/main/share/examples/appjail/hooks/pre.d/sysctl.sh) hooks are required for this AppJail to work.
+
+1. Be sure to set `HOOKSDIR` in your `appjail.conf(5)` file.
+
+   ```console
+   $ grep '^HOOKSDIR' /usr/local/etc/appjail/appjail.conf
+   HOOKSDIR=/usr/local/etc/appjail/hooks
+   ```
+2. Create the hooks directory if it does not exist.
+
+   ```console
+   $ mkdir -p /usr/local/etc/appjail/hooks/pre.d/
+   ```
+3. Install `load-kld` and `sysctl` hooks and set their execute bit:
+
+   ```console
+   $ fetch -o /usr/local/etc/appjail/hooks/pre.d/load-kld.sh \
+       https://github.com/DtxdF/AppJail/blob/main/share/examples/appjail/hooks/pre.d/load-kld.sh?raw=true
+   $ chmod +x /usr/local/etc/appjail/hooks/pre.d/load-kld.sh
+   $ fetch -o /usr/local/etc/appjail/hooks/pre.d/sysctl.sh \
+       https://github.com/DtxdF/AppJail/blob/main/share/examples/appjail/hooks/pre.d/sysctl.sh?raw=true
+   $ chmod +x /usr/local/etc/appjail/hooks/pre.d/sysctl.sh
+   ```
+
 ### User Permissions
 
 By default, the jail lacks the necessary devices for sound, the webcam, etc., to work as expected. To achieve this, the system operator must grant the user certain permissions, and the user must allow the jail to be created with the specific permissions required for that session. This is implemented using attributes:
@@ -162,6 +188,7 @@ The above assumes that the jail is allowed to connect to `1.1.1.1` and send ICMP
 | `oci.from` | Location of OCI image.|
 | `oci.tag` | OCI image tag.|
 | `<appname>:<profile>.labels.<label>` | The value of the label.|
+| `<appname>:<profile>.network.mode` | Same as `network.mode`, but by application. It takes precedence when defined.|
 | `<appname>:<profile>.oci.from` | Same as `oci.from`, but by application. It takes precedence when defined.|
 | `<appname>:<profile>.oci.tag` | Same as `oci.tag`, but by application. It takes precedence when defined.|
 | `users.<uid>.perms` | A space-separated list of "permissions" granted to a specific user.<br><br>The implemented "permissions" are presented below:<br><br>* `enable_3d`<br>* `webcam`<br>* `usb`<br>* `sound`<br><br>For a description of any of them, consult `${X11APPJAIL_APPNAME}:${X11APPJAIL_PROFILE}.allow.<permission>` in the "[User Attributes](#user-attributes)" section.<br>|
