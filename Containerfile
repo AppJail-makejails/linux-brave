@@ -17,7 +17,7 @@ RUN set -xe; \
     \
     pkg update; \
     pkg install linux_base-rl9; \
-    pkg install linux-brave dbus; \
+    pkg install linux-brave; \
     \
     if [ -z "${NO_PKGCLEAN}" ]; then \
         pkg clean -a; \

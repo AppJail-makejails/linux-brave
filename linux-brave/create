@@ -56,6 +56,7 @@ if x11appjail sys-attr check widevine.accept.license; then
     set -- "$@" -o fstab="\"${DATADIR}\" /widevine nullfs ro"
 fi
 
+. "${X11APPJAIL_WORKDIR}/appjail.d/dbus-dirs.subr"
 . "${X11APPJAIL_WORKDIR}/appjail.d/datadir.subr"
 . "${X11APPJAIL_WORKDIR}/appjail.d/end.subr"
 . "${X11APPJAIL_WORKDIR}/appjail.d/oci.subr"

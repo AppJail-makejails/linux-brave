@@ -8,7 +8,6 @@ INCLUDE appjail.d/makejail.d/linux-options.makejail
 INCLUDE appjail.d/makejail.d/linux-fonts.makejail
 INCLUDE appjail.d/makejail.d/create-user.makejail
 INCLUDE appjail.d/makejail.d/groups.makejail
-INCLUDE appjail.d/makejail.d/dbus.makejail
 INCLUDE appjail.d/makejail.d/linux.makejail
 
 CMD if [ -d "/widevine" ]; then \
