@@ -12,7 +12,7 @@ __fonts_path="/compat/linux/system-fonts"
 . "${X11APPJAIL_WORKDIR}/appjail.d/fonts.subr"
 
 if x11appjail sys-attr check widevine.accept.license; then
-    CHROME_VERSION="152.0.7977.75-1"
+    CHROME_VERSION="156.0.8078.47-1"
     LINUX_ARCH="amd64"
     DISTFILE="google-chrome-stable_${CHROME_VERSION}_amd64.deb"
     ROOTDIR="/var/cache/x11appjail/widevine"
