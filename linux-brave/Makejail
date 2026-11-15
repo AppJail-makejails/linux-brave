@@ -9,8 +9,4 @@ INCLUDE appjail.d/makejail.d/linux-fonts.makejail
 INCLUDE appjail.d/makejail.d/create-user.makejail
 INCLUDE appjail.d/makejail.d/groups.makejail
 INCLUDE appjail.d/makejail.d/linux.makejail
-
-CMD if [ -d "/widevine" ]; then \
-        install -d -m 755 /usr/local/lib; \
-        cp -a /widevine/opt/google/chrome/WidevineCdm /usr/local/lib; \
-    fi
+INCLUDE appjail.d/makejail.d/widevine.makejail
